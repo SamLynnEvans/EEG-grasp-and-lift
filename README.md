@@ -808,30 +808,7 @@ def show_results(fs=[0], trues=1, ps=[0], ths=[0.3],left=0,right=0):
 ```python
 show_results(fs=[0,1,2,3,4,5],trues=1, ps=[1,1,1,1,2,2], ths=[0.1,0.3,0.3,0.3,0.3,0.3], left=30.0, right=34.55)
 ```
-
-
-![png](eeg_files/eeg_38_0.png)
-
-
-
-![png](eeg_files/eeg_38_1.png)
-
-
-
-![png](eeg_files/eeg_38_2.png)
-
-
-
-![png](eeg_files/eeg_38_3.png)
-
-
-
-![png](eeg_files/eeg_38_4.png)
-
-
-
-![png](eeg_files/eeg_38_5.png)
-
+<img src="https://cdn-images-1.medium.com/max/800/1*Nis8CvhDu_XcvEUz475ZbA.png">
 
 I think these results are particularly impressive. Although the predictions don't line up exactly with the data labels, this is not important in a functional sense.
 
