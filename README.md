@@ -42,9 +42,9 @@ ev = pd.read_csv('./train/subj1_series1_events.csv')
 data.head()
 ```
 <div>
-<table border="1" class="dataframe">
+<table border="images/1" class="images/dataframe">
   <thead>
-    <tr style="text-align: right;">
+    <tr style="images/text-align: right;">
       <th></th>
       <th>id</th>
       <th>Fp1</th>
@@ -198,16 +198,16 @@ data.head()
 
 
 # Diagram showing where 32 readings above were taken from
-<img src="EEGsetup.jpeg">
+<img src="images/EEGsetup.jpeg">
 
 
 ```python
 ev.head()
 ```
 <div>
-<table border="1" class="dataframe">
+<table border="images/1" class="images/dataframe">
   <thead>
-    <tr style="text-align: right;">
+    <tr style="images/text-align: right;">
       <th></th>
       <th>id</th>
       <th>HandStart</th>
@@ -387,15 +387,15 @@ The below functions let you pick an event and a subject and see how the 32 volta
 
 To begin looking at the data I picked the first event 'HandStart'. This refers to when a light flashes,  telling the subject to begin the grasp and lift. Looking at the first subject, this figure shows how the 32 values changed during the time window.
 
-<img src="32waves.jpeg">
+<img src="images/32waves.jpeg">
 
 Already we can see a pattern and if we average all the 32 values, it suddenly becomes much more clear.
 
-<img src="subj1wave.jpeg">
+<img src="images/subj1wave.jpeg">
 
 It seems HandStart is accompanied by a general lowering of the overall voltage readings followed by a spike. The model should be able to recognise these patterns when making predictions. Importantly, the data has a similar shape when we look at another subject:
 
-<img src="subj3wave.jpeg">
+<img src="images/subj3wave.jpeg">
 
 With such clear patterns, you might wonder who even needs a machine learning algorithm? Yet unfortunately things become less obvious as we look at the rest of the subjects. Scroll down to see averages from all subjects.
 
@@ -535,7 +535,7 @@ It consists of a 1d convolutional layer, and two linear layers. While a full des
 
 A convolutional layer simply consists of a kernel that slides along our data and applies its weights to the data values. This animation I made explains better than words alone:
 
-<img src='cnn.gif'>
+<img src='images/cnn.gif'>
 
 In reality deep learning networks will have multiple kernels, producing multiple output arrays. In the network coded above, we use 64 kernels each with their own weights, and hence produce 64 different output vectors. Each of these kernels can react to a different kind of pattern in the input.
 
@@ -543,7 +543,7 @@ There will also be multiple input channels (32 in fact), each one containing the
 
 The outputs from the convolutional layer are then all lined up in a single vector and put through a neural network with two layers. Here is an animation of a simple two layer neural network with three inputs, a first layer with two nodes, and a final layer with one:
 
-<img src='nn.gif'>
+<img src='images/nn.gif'>
 
 In our neural network the process is the same though only much bigger (8128 input nodes, 124 nodes in the first layer, and 6 nodes in the final layer). There are 6 final nodes because there are 6 possible actions, and we determine an action is happening if it's corresponding node scores above a certain threshold. 
 
@@ -582,7 +582,7 @@ def train(traindata, epochs, printevery=1, shuffle=True):
             total_loss += loss.data[0]
             optim.step()
             if (i + 1) % printevery == 0:
-                print("epoch: %d, iter %d/%d, loss %.4f"%(epoch + 1, i + 1, len(traindata)//2000, total_loss/printevery), end='\r')
+                print("epoch: %d, iter %d/%d, loss %.4f"%(epoch + 1, i + 1, len(traindata)//2000, total_loss/printevery), end='images/\r')
                 total_loss = 0
 
             
@@ -816,7 +816,7 @@ def show_results(fs=[0], trues=1, ps=[0], ths=[0.3],left=0,right=0):
 ```python
 show_results(fs=[0,1,2,3,4,5],trues=1, ps=[1,1,1,1,2,2], ths=[0.1,0.3,0.3,0.3,0.3,0.3], left=30.0, right=34.55)
 ```
-<img src="https://cdn-images-1.medium.com/max/800/1*Nis8CvhDu_XcvEUz475ZbA.png">
+<img src="images/all_results.png">
 
 I think these results are particularly impressive. Although the predictions don't line up exactly with the data labels, this is not important in a functional sense.
 
