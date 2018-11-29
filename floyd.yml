@@ -1,0 +1,5 @@
+machine: cpu
+input:
+  - source: samlynnevans/datasets/eeg-grasp-and-lift/1
+    destination: data
+env: pytorch-1.0
